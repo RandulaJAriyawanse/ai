@@ -258,8 +258,7 @@ const toolCallStreamPart: StreamPart<
       typeof value.toolCallId !== 'string' ||
       !('toolName' in value) ||
       typeof value.toolName !== 'string' ||
-      !('args' in value) ||
-      typeof value.args !== 'object'
+      !('args' in value)
     ) {
       throw new Error(
         '"tool_call" parts expect an object with a "toolCallId", "toolName", and "args" property.',

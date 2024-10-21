@@ -8,7 +8,8 @@ export function parsePartialJson(jsonText: string | undefined): {
     | 'undefined-input'
     | 'successful-parse'
     | 'repaired-parse'
-    | 'failed-parse';
+    | 'failed-parse'
+    | 'no-parse';
 } {
   if (jsonText === undefined) {
     return { value: undefined, state: 'undefined-input' };
@@ -32,5 +33,5 @@ export function parsePartialJson(jsonText: string | undefined): {
     }
   }
 
-  return { value: undefined, state: 'failed-parse' };
+  return { value: jsonText, state: 'no-parse' };
 }

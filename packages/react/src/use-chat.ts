@@ -128,7 +128,9 @@ const getStreamedResponse = async (
           ...(name !== undefined && { name }),
           ...(data !== undefined && { data }),
           ...(annotations !== undefined && { annotations }),
-          ...(toolInvocations !== undefined && { toolInvocations }),
+          ...toolInvocations !== undefined && {
+            toolInvocations: toolInvocations.filter(tool => !["dataframe", "plot", "filter_data"].includes(tool.toolName))
+          },
           // outdated function/tool call handling (TODO deprecate):
           tool_call_id,
           ...(function_call !== undefined && { function_call }),
